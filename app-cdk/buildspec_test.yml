@@ -9,9 +9,15 @@ phases:
     commands:
       - cd ./my-app
       - echo Installing npm packages... 
-      - npm install  
+      - npm install
   build:
     commands:
       - echo run tests...
-      - CI=true npm run test  
+      - CI=true npm run test -- --reporters=jest-junit
+reports:
+  jest_reports:
+    files:
+      - junit.xml
+    file-format: JUNITXML
+    base-directory: my-app
 
